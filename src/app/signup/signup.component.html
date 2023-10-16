@@ -1,0 +1,40 @@
+<form [formGroup]="Form" (ngSubmit)="onSubmit()" >
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="abcdef" name="username" formControlName="username" >
+        <mat-hint *ngIf="Form.controls.username.invalid && (Form.controls.username.dirty || Form.controls.username.touched)">
+          <span *ngIf="Form.controls.username.errors?.['required']">Username is required.</span>
+          <span *ngIf="Form.controls.username.errors?.['minlength']">At least 8 character</span>
+        </mat-hint>
+      </mat-form-field>
+  
+      <br>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput type="password" name="password" formControlName="password">
+        <mat-hint *ngIf="Form.controls.password.invalid && (Form.controls.password.dirty || Form.controls.password.touched)">
+          <span *ngIf="Form.controls.password.errors?.['required']">Password is required.</span>
+          <span *ngIf="Form.controls.password.errors?.['minlength']">At least 8 characters</span>
+        </mat-hint>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput type="password" name="confirmpassword" formControlName="confirmpassword">
+        <mat-hint *ngIf="Form.controls.confirmpassword.invalid && (Form.controls.confirmpassword.dirty || Form.controls.confirmpassword.touched)">
+          <span *ngIf="Form.controls.confirmpassword.errors?.['required']">Password is required.</span>
+          <span *ngIf="Form.controls.confirmpassword.errors?.['minlength']">At least 8 characters</span>
+        </mat-hint>
+      </mat-form-field>
+      <br>
+  
+      <div class="gap">
+        <button mat-raised-button (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="Form.invalid">Sign up</button>
+      </div>
+    </div>
+  </form>
+  
